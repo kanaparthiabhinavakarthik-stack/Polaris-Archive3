@@ -4,6 +4,9 @@ const navItems = [
   { to: "/repository", label: "Repository" },
   { to: "/findings", label: "Findings" },
   { to: "/media", label: "Media" },
+  { to: "/documents", label: "Documents" },
+  { to: "/stations", label: "Stations" },
+  { to: "/researchers", label: "For Researchers" },
   { to: "/students", label: "For Students" },
   { to: "/about", label: "About" },
 ] as const;
