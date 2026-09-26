@@ -1,0 +1,19 @@
+ICE EXPLORERS ARCHIVE — DOCUMENT RECORD
+ID: DOC-012
+Title: Antarctic Digital Data and Research Resources
+Discipline: Geospatial science / Antarctic research
+Access: Researcher
+Status: Reference
+
+SUMMARY
+Antarctic research depends on shared geospatial datasets, observations and scientific metadata. Digital research resources can support mapping, field planning, environmental analysis and comparison of observations collected by different projects.
+
+RESEARCH WORKFLOW
+1. Identify the dataset and its scientific purpose.
+2. Check metadata and licensing.
+3. Record spatial and temporal coverage.
+4. Cite the original data provider.
+5. Preserve processing steps for reproducibility.
+
+NOTE
+The Researcher label in this demo represents the proposed archive workflow; it does not grant access to restricted external datasets.
