@@ -143,3 +143,61 @@ export const stations = [
     type: "Research Station",
   },
 ];
+
+export const disciplines = [
+  "Glaciology",
+  "Climate Science",
+  "Atmospheric Science",
+  "Polar Biology",
+  "Geospatial Science",
+  "Polar Governance",
+];
+
+export const studentResources = [
+  {
+    title: "Student Polar Research Template",
+    description:
+      "A structured template for students to plan, conduct and document a small polar research project.",
+  },
+  {
+    title: "Research Data Guide",
+    description:
+      "A beginner-friendly guide to identifying datasets, recording metadata and documenting research methods.",
+  },
+  {
+    title: "Archive Research Guide",
+    description:
+      "A simple guide for students exploring scientific records and polar research resources.",
+  },
+];
+
+export const stations = [
+  // your 12 stations...
+];
+
+export const disciplines = [
+  "Glaciology",
+  "Climate Science",
+  "Atmospheric Science",
+  "Polar Biology",
+  "Geospatial Science",
+  "Polar Governance",
+];
+
+export const studentResources = [
+  {
+    title: "Student Polar Research Template",
+    description:
+      "A structured template for students to plan, conduct and document a small polar research project.",
+  },
+  {
+    title: "Research Data Guide",
+    description:
+      "A beginner-friendly guide to identifying datasets, recording metadata and documenting research methods.",
+  },
+  {
+    title: "Archive Research Guide",
+    description:
+      "A simple guide for students exploring scientific records and polar research resources.",
+  },
+];
