@@ -1,133 +1,145 @@
-export interface Discipline {
-  slug: string;
-  index: string;
-  name: string;
-  description: string;
-  records: string;
-}
+export type AccessLevel = "Public" | "Researcher" | "Student";
 
-export const disciplines: Discipline[] = [
-  {
-    slug: "glaciology",
-    index: "01",
-    name: "Glaciology",
-    description: "Ice cores, flow dynamics and the physics of frozen time.",
-    records: "1,842 records",
-  },
-  {
-    slug: "climate",
-    index: "02",
-    name: "Climate",
-    description: "Atmospheric reconstructions from trapped gas and isotope ratios.",
-    records: "2,307 records",
-  },
-  {
-    slug: "wildlife",
-    index: "03",
-    name: "Wildlife",
-    description: "Long-term observation of polar species and shifting ranges.",
-    records: "961 records",
-  },
-  {
-    slug: "oceanography",
-    index: "04",
-    name: "Oceanography",
-    description: "Sea-ice, current and salinity data across the polar basins.",
-    records: "1,530 records",
-  },
-];
-
-export interface Finding {
+export type ArchiveDocument = {
   id: string;
-  station: string;
-  discipline: string;
   title: string;
-  summary: string;
   year: string;
-  location: string;
-}
+  discipline: string;
+  author: string;
+  access: AccessLevel;
+  description: string;
+  file: string;
+};
 
-export const findings: Finding[] = [
+export const documents: ArchiveDocument[] = [
   {
-    id: "D-0142",
-    station: "Station 7",
+    id: "DOC-001",
+    title: "Antarctic Treaty Reference",
+    year: "1959",
+    discipline: "Polar Governance",
+    author: "Antarctic Treaty Secretariat",
+    access: "Public",
+    description:
+      "A reference summary describing the Antarctic Treaty framework and international scientific cooperation.",
+    file: "/documents/antarctic-treaty-reference.txt",
+  },
+  {
+    id: "DOC-002",
+    title: "ICESat-2 Polar Ice Measurements",
+    year: "2018–Present",
     discipline: "Glaciology",
-    title: "The ice memory of the last three centuries",
-    summary:
-      "A 312-metre ice core retrieved from the Devon ice shelf holds trapped air from 690 years ago — a continuous breath of the planet's past, one winter at a time.",
-    year: "2024",
-    location: "DeVries Ice Shelf, East Antarctica",
+    author: "NASA",
+    access: "Public",
+    description:
+      "Reference material about satellite laser measurements used to study ice elevation and polar change.",
+    file: "/documents/icesat2-reference.txt",
   },
   {
-    id: "C-0091",
-    station: "Station 3",
-    discipline: "Climate",
-    title: "Spring methane fluxes above the two-decade mean",
-    summary:
-      "Flux towers across the Laptev coast recorded spring emissions running 40% above the long-term average for a third consecutive season.",
-    year: "2025",
-    location: "Laptev Sea coast, Siberia",
+    id: "DOC-003",
+    title: "Antarctic Ozone Research",
+    year: "1970s–Present",
+    discipline: "Atmospheric Science",
+    author: "Polar Research Community",
+    access: "Public",
+    description:
+      "An introductory record covering observation and scientific study of seasonal Antarctic ozone changes.",
+    file: "/documents/antarctic-ozone-reference.txt",
   },
   {
-    id: "W-0217",
-    station: "Station 11",
-    discipline: "Wildlife",
-    title: "A rookery that moved north",
-    summary:
-      "An emperor penguin colony abandoned its century-old breeding ground and re-established 34 km north, following the retreating fast ice.",
-    year: "2023",
-    location: "Weddell Sea, Antarctica",
+    id: "DOC-004",
+    title: "Antarctic Digital Data Resources",
+    year: "Current",
+    discipline: "Geospatial Science",
+    author: "SCAR Research Community",
+    access: "Researcher",
+    description:
+      "A reference record explaining how Antarctic geospatial datasets can support scientific research.",
+    file: "/documents/scar-data-reference.txt",
   },
   {
-    id: "O-0058",
-    station: "Station 2",
-    discipline: "Oceanography",
-    title: "Warm deep water reaches the grounding line",
-    summary:
-      "Moored instruments detected circumpolar deep water crossing the continental shelf and reaching the glacier grounding line in winter for the first time.",
-    year: "2024",
-    location: "Amundsen Sea, West Antarctica",
-  },
-  {
-    id: "G-0330",
-    station: "Station 5",
-    discipline: "Glaciology",
-    title: "Crevasse fields widening ahead of schedule",
-    summary:
-      "Repeat lidar surveys show crevasse density increasing 12% per decade along the shear margins of two major outlet glaciers.",
-    year: "2022",
-    location: "Sermeq Kujalleq, Greenland",
-  },
-  {
-    id: "C-0144",
-    station: "Station 9",
-    discipline: "Climate",
-    title: "The polar night is warming fastest",
-    summary:
-      "Winter warming at high-latitude stations is now outpacing summer warming by a factor of three, reshaping the entire cold-season energy budget.",
-    year: "2025",
-    location: "Ny-Ålesund, Svalbard",
+    id: "DOC-005",
+    title: "Student Polar Research Template",
+    year: "2026",
+    discipline: "Student Research",
+    author: "Polaris Archive",
+    access: "Student",
+    description:
+      "A structured template students can use to prepare a small, reproducible polar research project.",
+    file: "/documents/student-polar-research-template.txt",
   },
 ];
 
-export interface MediaItem {
-  kind: string;
-  title: string;
-  image: string;
-  alt: string;
-}
-
-export const studentResources = [
+export const stations = [
   {
-    name: "Datasets",
-    description: "Open CSVs with tidy metadata ready for analysis.",
+    name: "McMurdo Station",
+    country: "United States",
+    region: "Ross Island",
+    type: "Research Station",
   },
   {
-    name: "Field notes",
-    description: "Annotated journals from six active expeditions.",
+    name: "Amundsen–Scott South Pole Station",
+    country: "United States",
+    region: "Geographic South Pole",
+    type: "Research Station",
   },
   {
-    name: "Lesson packs",
-    description: "Graded reading packs for secondary and A-level study.",
+    name: "Concordia Station",
+    country: "France / Italy",
+    region: "Dome C",
+    type: "Research Station",
+  },
+  {
+    name: "Vostok Station",
+    country: "Russia",
+    region: "East Antarctica",
+    type: "Research Station",
+  },
+  {
+    name: "Neumayer Station III",
+    country: "Germany",
+    region: "Ekström Ice Shelf",
+    type: "Research Station",
+  },
+  {
+    name: "Halley VI",
+    country: "United Kingdom",
+    region: "Brunt Ice Shelf",
+    type: "Research Station",
+  },
+  {
+    name: "Troll Station",
+    country: "Norway",
+    region: "Queen Maud Land",
+    type: "Research Station",
+  },
+  {
+    name: "Summit Station",
+    country: "United States",
+    region: "Greenland",
+    type: "Research Station",
+  },
+  {
+    name: "Casey Station",
+    country: "Australia",
+    region: "Wilkes Land",
+    type: "Research Station",
+  },
+  {
+    name: "Davis Station",
+    country: "Australia",
+    region: "Princess Elizabeth Land",
+    type: "Research Station",
+  },
+  {
+    name: "Mawson Station",
+    country: "Australia",
+    region: "Mac. Robertson Land",
+    type: "Research Station",
+  },
+  {
+    name: "Zhongshan Station",
+    country: "China",
+    region: "Princess Elizabeth Land",
+    type: "Research Station",
   },
 ];
