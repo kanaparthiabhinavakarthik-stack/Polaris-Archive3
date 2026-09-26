@@ -1,101 +1,174 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { studentResources } from "../lib/archive-data";
+import { FormEvent, useState } from "react";
 
 export const Route = createFileRoute("/students")({
-  head: () => ({
-    meta: [
-      { title: "For Students — Polaris Archive" },
-      {
-        name: "description",
-        content:
-          "Datasets, field notes and lesson packs that bring polar research into the classroom — free for students and teachers.",
-      },
-      { property: "og:title", content: "For Students — Polaris Archive" },
-      {
-        property: "og:description",
-        content: "Datasets, field notes and lesson packs that bring polar research into the classroom.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
   component: StudentsPage,
 });
 
-const modules = [
-  {
-    id: "Module 01",
-    title: "Reading an ice core",
-    length: "22 min",
-    description:
-      "How layers, bubbles and isotopes turn a cylinder of ice into a climate timeline.",
-  },
-  {
-    id: "Module 02",
-    title: "Mapping the calving front",
-    length: "18 min",
-    description:
-      "Use real satellite pairs to measure how a glacier's edge retreats over a decade.",
-  },
-  {
-    id: "Module 03",
-    title: "What the data actually shows",
-    length: "27 min",
-    description:
-      "A guided walk through a genuine methane flux dataset — uncertainty included.",
-  },
-];
-
 function StudentsPage() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSubmitted(true);
+  }
+
   return (
-    <main className="bg-paper">
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ember">For Students</p>
-        <h1 className="mt-3 max-w-[24ch] text-balance font-display text-4xl font-medium tracking-tight lg:text-5xl">
-          Bring the archive into your classroom
-        </h1>
-        <p className="mt-5 max-w-[52ch] text-pretty text-lg text-ink-soft">
-          Everything here is written in plain language and sourced from the same records our
-          researchers rely on. Free to download, free to teach with.
+    <main className="min-h-screen bg-slate-950 px-6 py-12 text-white">
+      <div className="mx-auto max-w-5xl">
+        <p className="text-sm font-semibold uppercase tracking-widest text-blue-400">
+          Student Research Hub
         </p>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-3">
-          {studentResources.map((r) => (
-            <div key={r.name} className="rounded-md bg-ice/50 p-6 ring-1 ring-black/5">
-              <h2 className="font-display text-xl font-medium">{r.name}</h2>
-              <p className="mt-2 text-pretty text-sm text-ink-soft">{r.description}</p>
-            </div>
-          ))}
-        </div>
+        <h1 className="mt-2 text-4xl font-bold">
+          Build Your Polar Research Profile
+        </h1>
 
-        <div className="mt-16">
-          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ink-soft">
-            Guided modules
-          </p>
-          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
-            Learn the method, not just the map
-          </h2>
-          <div className="mt-8 space-y-3">
-            {modules.map((m) => (
-              <div
-                key={m.id}
-                className="flex flex-col gap-2 rounded-md bg-ice/50 p-5 ring-1 ring-black/5 transition-colors hover:bg-ice sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ember">
-                    {m.id}
-                  </span>
-                  <p className="mt-0.5 font-display text-lg font-medium">{m.title}</p>
-                  <p className="mt-1 max-w-[56ch] text-pretty text-sm text-ink-soft">
-                    {m.description}
-                  </p>
-                </div>
-                <span className="shrink-0 font-mono text-[11px] text-ink-soft">{m.length} →</span>
-              </div>
-            ))}
+        <p className="mt-4 max-w-2xl text-slate-400">
+          Students can create a research profile, upload a CV and submit
+          legitimate research projects for review.
+        </p>
+
+        {submitted ? (
+          <div className="mt-10 rounded-2xl border border-green-500/30 bg-green-500/10 p-8">
+            <h2 className="text-2xl font-semibold text-green-400">
+              Student Profile Submitted
+            </h2>
+
+            <p className="mt-3 text-slate-300">
+              Your profile and research submission are marked as
+              <strong> Pending Review</strong>.
+            </p>
+
+            <button
+              onClick={() => setSubmitted(false)}
+              className="mt-6 rounded-lg bg-slate-800 px-4 py-2"
+            >
+              Edit Submission
+            </button>
           </div>
-        </div>
-      </section>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="mt-10 space-y-6 rounded-2xl border border-slate-800 bg-slate-900 p-8"
+          >
+            <div className="grid gap-6 md:grid-cols-2">
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">
+                  Student Name
+                </label>
+
+                <input
+                  required
+                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">
+                  Email
+                </label>
+
+                <input
+                  required
+                  type="email"
+                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                  placeholder="student@email.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm text-slate-300">
+                Institution
+              </label>
+
+              <input
+                required
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                placeholder="School / College / University"
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm text-slate-300">
+                Research Interests
+              </label>
+
+              <input
+                required
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                placeholder="Glaciology, climate, polar biology..."
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm text-slate-300">
+                Skills
+              </label>
+
+              <input
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                placeholder="Python, GIS, data analysis..."
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm text-slate-300">
+                Upload CV
+              </label>
+
+              <input
+                required
+                type="file"
+                accept=".pdf,.doc,.docx"
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+              />
+            </div>
+
+            <div className="border-t border-slate-800 pt-6">
+              <h2 className="text-xl font-semibold">
+                Research Submission
+              </h2>
+
+              <div className="mt-5 space-y-5">
+                <input
+                  required
+                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                  placeholder="Research project title"
+                />
+
+                <textarea
+                  required
+                  rows={5}
+                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                  placeholder="Describe your research project..."
+                />
+
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx,.txt"
+                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+                />
+              </div>
+            </div>
+
+            <label className="flex gap-3 text-sm text-slate-400">
+              <input required type="checkbox" />
+              I confirm that this is my work or that I have permission to
+              submit it.
+            </label>
+
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-blue-500 px-5 py-3 font-semibold hover:bg-blue-400"
+            >
+              Create Student Research Profile
+            </button>
+          </form>
+        )}
+      </div>
     </main>
   );
 }
